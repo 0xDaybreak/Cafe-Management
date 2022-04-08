@@ -1,0 +1,82 @@
+
+
+.parent {
+    -fx-background-color: transparent;
+}
+
+.login-bgimg {
+
+}
+
+.login-text {
+    -fx-opacity: 0.95;
+}
+
+.signup-textleft{
+    -fx-opacity: 0.6;
+}
+
+.login-textleft {
+    -fx-opacity: 1;
+}
+
+.signup-textleftsup{
+    -fx-opacity: 1;
+}
+
+.login-textleftsup {
+    -fx-opacity: 0.6;
+}
+
+.login-textfield {
+    -fx-background-radius: 13px;
+    -fx-background-color: #ffb0b0;
+    -fx-opacity: 0.77;
+}
+
+.login-button {
+    -fx-border-color: #c58383;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 11px;
+    -fx-background-color: #604038;
+}
+
+.login-button:hover {
+    -fx-background-color: #7c564d;
+}
+
+.home-vbox {
+    -fx-background-color: #7a1953;
+}
+
+.menu-button {
+    -fx-background-color: #7a1953;
+}
+
+.menu-button:hover {
+    -fx-background-color: #966b61;
+}
+
+
+.table-row-cell:filled:hover {
+    -fx-size:50;
+    -fx-alignment: CENTER;
+    -fx-text-alignment: center;
+}
+
+.table-view:row-selection {
+    -fx-background-color: #e7e7e7;
+    -fx-text-fill: white;
+    -fx-background-radius: 15px;
+    -fx-fixed-cell-size: 50;
+    -fx-alignment: CENTER;
+    -fx-text-alignment: center;
+
+}
+
+.table-view .table-column{
+    -fx-text-alignment: center;
+    -fx-alignment: CENTER
+
+}
