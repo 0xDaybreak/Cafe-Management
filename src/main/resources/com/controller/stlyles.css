@@ -59,24 +59,24 @@
 
 .delete {
 
-    -fx-background-color: #f3f3f3;
+    -fx-background-color: #fff0f0;
     -fx-border-color: #ee2a2a;
-    -fx-background-radius:7px;
-    -fx-border-radius: 7px;
+    -fx-background-radius:10px;
+    -fx-border-radius: 10px;
 }
 
 
 .delete:hover {
 
-    -fx-background-color: #f8f8f8;
+    -fx-background-color: #ffffff;
 }
 
 .insert {
 
     -fx-background-color: #8f316b;
     -fx-border-color: #c58383;
-    -fx-background-radius:7px;
-    -fx-border-radius: 7px;
+    -fx-background-radius:10px;
+    -fx-border-radius: 10px;
 }
 
 
@@ -85,7 +85,19 @@
     -fx-background-color: #966b61;
 }
 
+.update {
 
+    -fx-background-color: #a13ea4;
+    -fx-border-color: #59c0f3;
+    -fx-background-radius:10px;
+    -fx-border-radius: 10px;
+}
+
+
+.update:hover {
+
+    -fx-background-color: #67b1c7;
+}
 
 .table-row-cell:filled:hover {
     -fx-size:50;
@@ -94,8 +106,8 @@
 }
 
 .table-view:row-selection {
-    -fx-background-color: #e7e7e7;
-    -fx-text-fill: white;
+    -fx-background-color: #ffdbdb;
+    -fx-text-fill: #ffdbdb;
     -fx-background-radius: 15px;
     -fx-fixed-cell-size: 50;
     -fx-alignment: CENTER;

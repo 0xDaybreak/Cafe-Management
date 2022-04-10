@@ -23,6 +23,8 @@ public class UserController implements Initializable {
     @FXML
     private Button insertBtn;
     @FXML
+    private Button updateBtn;
+    @FXML
     private Button deleteBtn;
     @FXML
     private TextField tfUsername;
@@ -33,13 +35,14 @@ public class UserController implements Initializable {
     @FXML
     private TextField tfCity;
 
+
     UserService userService;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         createTable();
         insertUser();
-        deleteBtn.setOnMouseClicked(e->System.out.println(tvUsers.getSelectionModel().getSelectedItem()));
+        updateUser();
         deleteUser();
 
     }
@@ -78,6 +81,7 @@ public class UserController implements Initializable {
         ObservableList<UserEntity> userList = FXCollections.observableList(userService.getAllUsers());
         //set new user in table
         tvUsers.setItems(userList);
+        tvUsers.refresh();
     }
 
     private void insertUser() {
@@ -98,17 +102,35 @@ public class UserController implements Initializable {
         });
     }
 
+    private void updateUser() {
+
+        updateBtn.setOnMouseClicked(e -> {
+            if (tvUsers.getSelectionModel().getSelectedItem() != null) {
+                tvUsers.getSelectionModel().getSelectedItem().setUsername(tfUsername.getText());
+                tvUsers.getSelectionModel().getSelectedItem().setPassword(tfPassword.getText());
+                tvUsers.getSelectionModel().getSelectedItem().setEmail(tfEmail.getText());
+                tvUsers.getSelectionModel().getSelectedItem().setCity(tfCity.getText());
+                userService.updateUser(tvUsers.getSelectionModel().getSelectedItem());
+                AlertBox.display("Success", "User updated successfully");
+                refreshTable();
+            }
+            else {
+                AlertBox.display("Error", "Please select user you wish to update");
+            }
+        });
+
+    }
+
     private void deleteUser() {
-            deleteBtn.setOnMouseClicked(e -> {
-                if(tvUsers.getSelectionModel().getSelectedItem() != null) {
-                    userService.removeUser(tvUsers.getSelectionModel().getSelectedItem(),
-                            tvUsers.getSelectionModel().getSelectedItem().getUserId());
-                    refreshTable();
-                }
-                else {
-                    AlertBox.display("Error", "Please select a user before trying to delete");
-                }
-            });
-        }
+        deleteBtn.setOnMouseClicked(e -> {
+            if (tvUsers.getSelectionModel().getSelectedItem() != null) {
+                userService.removeUser(tvUsers.getSelectionModel().getSelectedItem(),
+                        tvUsers.getSelectionModel().getSelectedItem().getUserId());
+                refreshTable();
+            } else {
+                AlertBox.display("Error", "Please select a user before trying to delete");
+            }
+        });
+    }
 }
 

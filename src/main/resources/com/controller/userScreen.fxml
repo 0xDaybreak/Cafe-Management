@@ -10,9 +10,9 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1102.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.UserController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffe6e6;">
          <children>
-            <AnchorPane layoutX="170.0" layoutY="43.0" prefHeight="127.0" prefWidth="896.0">
+            <AnchorPane layoutX="170.0" layoutY="29.0" prefHeight="127.0" prefWidth="896.0">
                <children>
                   <Label layoutY="19.0" prefHeight="30.0" prefWidth="89.0" text="username">
                      <font>
@@ -38,8 +38,16 @@
                   <TextField fx:id="tfEmail" layoutX="381.0" layoutY="51.0" prefHeight="25.0" prefWidth="135.0" />
                   <TextField fx:id="tfPassword" layoutX="187.0" layoutY="51.0" prefHeight="25.0" prefWidth="135.0" />
                   <TextField fx:id="tfUsername" layoutY="51.0" prefHeight="25.0" prefWidth="135.0" />
-                  <Button fx:id="deleteBtn" layoutX="733.0" layoutY="88.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="116.0" styleClass="delete" stylesheets="@stlyles.css" text="Delete" />
-                  <Button fx:id="insertBtn" layoutX="733.0" layoutY="51.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" styleClass="insert" stylesheets="@stlyles.css" text="Insert" textFill="WHITE">
+                  <Button fx:id="deleteBtn" layoutX="733.0" layoutY="98.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="116.0" styleClass="delete" stylesheets="@stlyles.css" text="Delete">
+                     <font>
+                        <Font name="Segoe UI" size="15.0" />
+                     </font></Button>
+                  <Button fx:id="insertBtn" layoutX="733.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" styleClass="insert" stylesheets="@stlyles.css" text="Insert" textFill="WHITE">
+                     <font>
+                        <Font name="Segoe UI" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="updateBtn" layoutX="733.0" layoutY="48.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" styleClass="update" stylesheets="@stlyles.css" text="Update" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI" size="15.0" />
                      </font>
