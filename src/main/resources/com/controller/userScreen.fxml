@@ -1,13 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1102.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.UserController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
+            <AnchorPane layoutX="170.0" layoutY="43.0" prefHeight="127.0" prefWidth="896.0">
+               <children>
+                  <Label layoutY="19.0" prefHeight="30.0" prefWidth="89.0" text="username">
+                     <font>
+                        <Font name="Segoe UI" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="187.0" layoutY="19.0" prefHeight="30.0" prefWidth="89.0" text="password">
+                     <font>
+                        <Font name="Segoe UI" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="381.0" layoutY="19.0" prefHeight="30.0" prefWidth="89.0" text="email">
+                     <font>
+                        <Font name="Segoe UI" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="564.0" layoutY="19.0" prefHeight="30.0" prefWidth="89.0" text="city">
+                     <font>
+                        <Font name="Segoe UI" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfCity" layoutX="564.0" layoutY="51.0" prefHeight="25.0" prefWidth="135.0" />
+                  <TextField fx:id="tfEmail" layoutX="381.0" layoutY="51.0" prefHeight="25.0" prefWidth="135.0" />
+                  <TextField fx:id="tfPassword" layoutX="187.0" layoutY="51.0" prefHeight="25.0" prefWidth="135.0" />
+                  <TextField fx:id="tfUsername" layoutY="51.0" prefHeight="25.0" prefWidth="135.0" />
+                  <Button fx:id="deleteBtn" layoutX="733.0" layoutY="88.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="116.0" styleClass="delete" stylesheets="@stlyles.css" text="Delete" />
+                  <Button fx:id="insertBtn" layoutX="733.0" layoutY="51.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" styleClass="insert" stylesheets="@stlyles.css" text="Insert" textFill="WHITE">
+                     <font>
+                        <Font name="Segoe UI" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
             <TableView fx:id="tvUsers" layoutX="170.0" layoutY="170.0" prefHeight="538.0" prefWidth="919.0" styleClass=".table-view" stylesheets="@stlyles.css" />
          </children>
       </AnchorPane>

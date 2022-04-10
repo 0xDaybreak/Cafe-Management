@@ -27,6 +27,8 @@ public class UserService {
         userDao.update(updatedUser);
     }
 
+    public void removeUser(UserEntity removeUser, int user_id) { userDao.remove(removeUser,user_id);}
+
     public List<UserEntity> getAllUsers() {
         return userDao.findAll();
     }

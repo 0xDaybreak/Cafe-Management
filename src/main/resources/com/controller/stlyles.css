@@ -53,10 +53,38 @@
 .menu-button {
     -fx-background-color: #7a1953;
 }
-
 .menu-button:hover {
     -fx-background-color: #966b61;
 }
+
+.delete {
+
+    -fx-background-color: #f3f3f3;
+    -fx-border-color: #ee2a2a;
+    -fx-background-radius:7px;
+    -fx-border-radius: 7px;
+}
+
+
+.delete:hover {
+
+    -fx-background-color: #f8f8f8;
+}
+
+.insert {
+
+    -fx-background-color: #8f316b;
+    -fx-border-color: #c58383;
+    -fx-background-radius:7px;
+    -fx-border-radius: 7px;
+}
+
+
+.insert:hover {
+
+    -fx-background-color: #966b61;
+}
+
 
 
 .table-row-cell:filled:hover {
