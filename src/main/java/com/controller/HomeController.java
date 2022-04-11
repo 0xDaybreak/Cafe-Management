@@ -7,8 +7,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.effect.Bloom;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -36,6 +38,8 @@ public class HomeController implements Initializable {
     private Button coffeeBtn;
     @FXML
     private Button coffeeBtnText;
+    @FXML
+    private VBox vbIcons;
 
     @Override
     public void initialize(URL url, ResourceBundle rbl) {
@@ -43,13 +47,13 @@ public class HomeController implements Initializable {
         handleMenuPress();
         menuSwapAction();
     }
+
     private void handleMenuPress() {
 
         menubutton.selectedProperty().addListener(((observableValue, aBoolean, t1) -> {
-            if(t1) {
+            if (t1) {
                 slideout();
-            }
-            else {
+            } else {
                 slidein();
             }
         }));
@@ -61,26 +65,29 @@ public class HomeController implements Initializable {
         slide.setNode(slider);
         slide.setToX(0);
         slide.play();
+        vbIcons.setEffect(null);
+
     }
 
     private void slideout() {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(slider);
-            slide.setToX(-200);
-            slide.play();
+        TranslateTransition slide = new TranslateTransition();
+        slide.setDuration(Duration.seconds(0.4));
+        slide.setNode(slider);
+        slide.setToX(-200);
+        slide.play();
+        vbIcons.setEffect(new Bloom(0.88));
     }
 
     private void menuSwapAction() {
         //add action listener to the buttons of the menu
-        usersBtn.setOnAction(e-> userScreen());
-        usersBtnText.setOnAction(e-> userScreen());
+        usersBtn.setOnAction(e -> userScreen());
+        usersBtnText.setOnAction(e -> userScreen());
 
-        ordersBtn.setOnAction(e-> ordersScreen());
-        ordersBtnText.setOnAction(e-> ordersScreen());
+        ordersBtn.setOnAction(e -> ordersScreen());
+        ordersBtnText.setOnAction(e -> ordersScreen());
 
-        coffeeBtn.setOnAction(e-> coffeeScreen());
-        coffeeBtnText.setOnAction(e-> coffeeScreen());
+        coffeeBtn.setOnAction(e -> coffeeScreen());
+        coffeeBtnText.setOnAction(e -> coffeeScreen());
     }
 
     //create user scene by calling userScreen.fxml
@@ -89,8 +96,7 @@ public class HomeController implements Initializable {
             Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("userScreen.fxml")));
             contentScene.getChildren().removeAll();
             contentScene.getChildren().setAll(fxml);
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
@@ -100,8 +106,7 @@ public class HomeController implements Initializable {
             Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ordersScreen.fxml")));
             contentScene.getChildren().removeAll();
             contentScene.getChildren().setAll(fxml);
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
@@ -111,8 +116,7 @@ public class HomeController implements Initializable {
             Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("coffeeScreen.fxml")));
             contentScene.getChildren().removeAll();
             contentScene.getChildren().setAll(fxml);
-        }
-        catch(IOException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }

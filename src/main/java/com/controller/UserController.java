@@ -35,7 +35,6 @@ public class UserController implements Initializable {
     @FXML
     private TextField tfCity;
 
-
     UserService userService;
 
     @Override
@@ -44,7 +43,6 @@ public class UserController implements Initializable {
         insertUser();
         updateUser();
         deleteUser();
-
     }
 
     private void createTable() {
@@ -113,8 +111,7 @@ public class UserController implements Initializable {
                 userService.updateUser(tvUsers.getSelectionModel().getSelectedItem());
                 AlertBox.display("Success", "User updated successfully");
                 refreshTable();
-            }
-            else {
+            } else {
                 AlertBox.display("Error", "Please select user you wish to update");
             }
         });
@@ -126,6 +123,7 @@ public class UserController implements Initializable {
             if (tvUsers.getSelectionModel().getSelectedItem() != null) {
                 userService.removeUser(tvUsers.getSelectionModel().getSelectedItem(),
                         tvUsers.getSelectionModel().getSelectedItem().getUserId());
+                AlertBox.display("Success", "User deleted successfully");
                 refreshTable();
             } else {
                 AlertBox.display("Error", "Please select a user before trying to delete");
