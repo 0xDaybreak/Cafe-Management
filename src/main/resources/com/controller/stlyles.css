@@ -126,3 +126,21 @@
     -fx-scale-y: 1.08;
     -fx-scale-z: 1.08;
 }
+
+.slider .track {
+    -fx-pref-height:12;
+}
+
+.slider .thumb {
+    -fx-pref-height: 15;
+    -fx-pref-width: 15;
+}
+
+.orderbtn {
+    -fx-background-color: #b19178;
+    -fx-background-radius: 6px;
+}
+
+.orderbtn:hover {
+    -fx-background-color: #d5baa9;
+}

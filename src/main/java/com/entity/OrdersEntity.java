@@ -1,6 +1,7 @@
 package com.entity;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
@@ -8,62 +9,62 @@ import java.util.Objects;
 public class OrdersEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
-    private int id;
+    @Column(name = "orders_id")
+    private int ordersId;
     @Basic
-    @Column(name = "ordername")
-    private String ordername;
+    @Column(name = "name")
+    private String name;
     @Basic
-    @Column(name = "orderquantity")
-    private Integer orderquantity;
+    @Column(name = "quantity")
+    private Integer quantity;
     @Basic
-    @Column(name = "orderprice")
-    private Double orderprice;
+    @Column(name = "price")
+    private Double price;
     @Basic
-    @Column(name = "orderdate")
-    private String orderdate;
+    @Column(name = "date")
+    private Timestamp date;
     @Basic
     @Column(name = "user_id")
     private int userId;
 
-    public int getId() {
-        return id;
+    public int getOrdersId() {
+        return ordersId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setOrdersId(int ordersId) {
+        this.ordersId = ordersId;
     }
 
-    public String getOrdername() {
-        return ordername;
+    public String getName() {
+        return name;
     }
 
-    public void setOrdername(String ordername) {
-        this.ordername = ordername;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Integer getOrderquantity() {
-        return orderquantity;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setOrderquantity(Integer orderquantity) {
-        this.orderquantity = orderquantity;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
-    public Double getOrderprice() {
-        return orderprice;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setOrderprice(Double orderprice) {
-        this.orderprice = orderprice;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
-    public String getOrderdate() {
-        return orderdate;
+    public Timestamp getDate() {
+        return date;
     }
 
-    public void setOrderdate(String orderdate) {
-        this.orderdate = orderdate;
+    public void setDate(Timestamp date) {
+        this.date = date;
     }
 
     public int getUserId() {
@@ -79,11 +80,11 @@ public class OrdersEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OrdersEntity that = (OrdersEntity) o;
-        return id == that.id && userId == that.userId && Objects.equals(ordername, that.ordername) && Objects.equals(orderquantity, that.orderquantity) && Objects.equals(orderprice, that.orderprice) && Objects.equals(orderdate, that.orderdate);
+        return ordersId == that.ordersId && userId == that.userId && Objects.equals(name, that.name) && Objects.equals(quantity, that.quantity) && Objects.equals(price, that.price) && Objects.equals(date, that.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, ordername, orderquantity, orderprice, orderdate, userId);
+        return Objects.hash(ordersId, name, quantity, price, date, userId);
     }
 }
