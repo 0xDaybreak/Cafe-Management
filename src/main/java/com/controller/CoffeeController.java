@@ -1,8 +1,9 @@
 package com.controller;
 
 import com.entity.OrdersEntity;
+import com.entity.UserEntity;
+import com.misc.Singleton;
 import com.service.OrdersService;
-import com.service.UserService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -45,8 +46,7 @@ public class CoffeeController implements Initializable {
     private CheckBox decafCb;
 
     OrdersEntity ordersEntity = new OrdersEntity();
-    //OrdersService ordersService = new OrdersService();
-    //UserService userService = new UserService();
+    OrdersService ordersService = new OrdersService();
 
     //price list of the individual items that are clickable on this scene
     double[] pricelist = {2.4, 3.4, 4.4, 1, 2, 3, 0.25, 0.5, 0.75, 1.75};
@@ -144,9 +144,15 @@ public class CoffeeController implements Initializable {
             ordersEntity.setQuantity(quantityIncreaseDecrease());
             ordersEntity.setPrice(calculateCoffeePrice());
             ordersEntity.setDate(timestamp);
-            //ordersEntity.setUserId(userService.findUser());
+            ordersEntity.setUserId(getUserId());
             System.out.println(ordersEntity.toString());
         });
+    }
+
+    private int getUserId() {
+        UserEntity userEntity = new UserEntity();
+        Singleton user = Singleton.getInstance(userEntity);
+        return user.getUser().getUserId();
     }
 
     //truncates the time stamp's miliseconds

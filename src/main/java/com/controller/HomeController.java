@@ -1,11 +1,14 @@
 package com.controller;
 
+import com.entity.UserEntity;
+import com.misc.Singleton;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.effect.Bloom;
 import javafx.scene.layout.AnchorPane;
@@ -40,12 +43,18 @@ public class HomeController implements Initializable {
     private Button coffeeBtnText;
     @FXML
     private VBox vbIcons;
+    @FXML
+    private Label wbLabel;
+    @FXML
+    private Label userLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle rbl) {
 
         handleMenuPress();
         menuSwapAction();
+        greetUser();
+        setUserLabel();
     }
 
     private void handleMenuPress() {
@@ -120,4 +129,17 @@ public class HomeController implements Initializable {
             ex.printStackTrace();
         }
     }
+
+    private void greetUser() {
+        UserEntity userEntity = new UserEntity();
+        Singleton user = Singleton.getInstance(userEntity);
+        wbLabel.setText("Welcome back " + user.getUser().getUsername() + " we missed you :(");
+    }
+
+    private void setUserLabel() {
+        UserEntity userEntity = new UserEntity();
+        Singleton user = Singleton.getInstance(userEntity);
+        userLabel.setText("Logged in as " + user.getUser().getUsername());
+    }
+
 }

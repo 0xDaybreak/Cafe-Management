@@ -1,6 +1,8 @@
 package com.controller;
 
+import com.entity.UserEntity;
 import com.misc.AlertBox;
+import com.misc.Singleton;
 import com.service.UserService;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -152,6 +154,8 @@ public class LoginController implements Initializable {
             if((userService.findUser(tfUsername.getText(), tfPassword.getText()).getUsername() + userService.findUser(tfUsername.getText(), tfPassword.getText()).getPassword())
                     .equals(tfUsername.getText() + tfPassword.getText()))
             {
+                UserEntity user = userService.findUser(tfUsername.getText(), tfPassword.getText());
+                Singleton.getInstance(user);
                 System.out.print("Successfully logged in");
                 //create a new stage, scene and open the home window
                 FXMLLoader fxmlLoader = new FXMLLoader();

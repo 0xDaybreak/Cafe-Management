@@ -15,7 +15,7 @@ public class UserService {
             userDao = new UserDao(Persistence.createEntityManagerFactory("default"));
         }
         catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 

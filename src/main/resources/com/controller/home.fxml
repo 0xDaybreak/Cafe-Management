@@ -29,7 +29,7 @@
                         <Font name="Freestyle Script" size="45.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="377.0" fitWidth="327.0" layoutX="276.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="377.0" fitWidth="327.0" layoutX="167.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/crosant.png" />
                      </image>
@@ -39,12 +39,11 @@
                         <Font name="Freestyle Script" size="45.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="459.0" layoutY="53.0" prefHeight="365.0" prefWidth="625.0" text="&quot;A mathematician is a machine for turning coffee into theorems&quot; - Alfred Renyi" textAlignment="CENTER" wrapText="true">
+                  <Label fx:id="wbLabel" alignment="CENTER" layoutX="429.0" layoutY="49.0" prefHeight="266.0" prefWidth="625.0" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="Freestyle Script" size="45.0" />
                      </font>
                   </Label>
-                  <FontAwesomeIconView glyphName="QUESTION" layoutX="1072.0" layoutY="694.0" size="20" />
                </children>
             </AnchorPane>
          </children>
@@ -99,6 +98,14 @@
                               <Insets left="10.0" />
                            </padding>
                         </Button>
+                        <Label fx:id="userLabel" alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="156.0" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets top="360.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Segoe UI" size="11.0" />
+                           </font>
+                        </Label>
                      </children>
                   </VBox>
                </children>
