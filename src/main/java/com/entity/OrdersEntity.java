@@ -76,6 +76,11 @@ public class OrdersEntity {
     }
 
     @Override
+    public String toString() {
+        return "[" + this.ordersId + " " + this.name + " " + this.quantity + " " + this.price + " " + this.date + " " + this.userId + "]";
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

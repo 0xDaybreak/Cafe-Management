@@ -153,7 +153,6 @@ public class LoginController implements Initializable {
                     .equals(tfUsername.getText() + tfPassword.getText()))
             {
                 System.out.print("Successfully logged in");
-
                 //create a new stage, scene and open the home window
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("home.fxml"));
