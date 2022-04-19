@@ -2,14 +2,9 @@ package com.misc;
 
 import com.entity.UserEntity;
 
-public class Singleton {
+public record Singleton(UserEntity user) {
 
     private static Singleton instance = null;
-    private final UserEntity user;
-
-    private Singleton(UserEntity user) {
-        this.user = user;
-    }
 
     public static Singleton getInstance(UserEntity user) {
         synchronized (Singleton.class) {

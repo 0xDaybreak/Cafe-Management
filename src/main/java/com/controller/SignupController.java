@@ -3,6 +3,7 @@ package com.controller;
 import com.entity.UserEntity;
 import com.misc.AlertBox;
 import com.service.UserService;
+import com.validator.EmailValidate;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -92,19 +93,47 @@ public class SignupController implements Initializable {
     private void checksignup() {
         userService = new UserService();
         if (tfsupUsername.getText().isEmpty()||tfsupPassword.getText().isEmpty()||tfsupEmail.getText().isEmpty()||tfsupCity.getText().isEmpty()) {
-            System.out.print("All fields are required");
             AlertBox.display("Error","Please fill in all the fields");
+        } else if (retrieveUsername(tfsupUsername.getText())) {
+            AlertBox.display("Error", "Username already taken");
+        }
+        else if(retrieveEmail(tfsupEmail.getText())) {
+            AlertBox.display("Error", "e-mail address already registered");
+        }
+        else if(!(EmailValidate.validate(tfsupEmail.getText()))) {
+            AlertBox.display("Error", "Please enter a valid e-mail address");
         }
         else {
-            UserEntity userEntity = new UserEntity();
-            userEntity.setUsername(tfsupUsername.getText());
-            userEntity.setPassword(tfsupPassword.getText());
-            userEntity.setEmail(tfsupEmail.getText());
-            userEntity.setCity(tfsupCity.getText());
-            userService.addUser(userEntity);
-            AlertBox.display("Success","User created successfully you can log in now");
+            createUser();
         }
 
     }
 
+    private boolean retrieveUsername(String username) {
+        for(UserEntity iterate : userService.getAllUsers()) {
+            if(username.equals(iterate.getUsername())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean retrieveEmail(String email) {
+        for(UserEntity iterate : userService.getAllUsers()) {
+            if(email.equals(iterate.getEmail())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void createUser() {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setUsername(tfsupUsername.getText());
+        userEntity.setPassword(tfsupPassword.getText());
+        userEntity.setEmail(tfsupEmail.getText());
+        userEntity.setCity(tfsupCity.getText());
+        userService.addUser(userEntity);
+        AlertBox.display("Success","User created successfully you can log in now");
+    }
 }

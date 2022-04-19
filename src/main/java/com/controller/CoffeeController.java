@@ -1,5 +1,7 @@
 package com.controller;
 
+import com.domain.Type;
+import com.entity.CoffeeEntity;
 import com.entity.OrdersEntity;
 import com.entity.UserEntity;
 import com.misc.Singleton;
@@ -46,6 +48,7 @@ public class CoffeeController implements Initializable {
     private CheckBox decafCb;
 
     OrdersEntity ordersEntity = new OrdersEntity();
+    CoffeeEntity coffeeEntity = new CoffeeEntity();
     OrdersService ordersService = new OrdersService();
 
     //price list of the individual items that are clickable on this scene
@@ -58,33 +61,44 @@ public class CoffeeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Collections.addAll(imageViewList, espresso, latte, iced, smallC, mediumC, largeC);
         selectCoffee();
-        quantityIncreaseDecrease();
         handleSliderEvent();
         handleChecboxEvent();
         handleBuyButtonPress();
+        handlePlusMinusBtn();
     }
 
     //check and restrict the current quantity of coffees whcich can be purchased at a time
-    //returns current quantity from the displayed text
-    private int quantityIncreaseDecrease() {
-        final int[] quantity = new int[1];
-            plusBtn.setOnMouseClicked(e -> {
-                    if(quantity[0]<9) {
-                        quantity[0] = Integer.parseInt((qtyLabel.getText())) + 1;
-                        qtyLabel.setText(String.valueOf(quantity[0]));
-                    }
-            });
-            minusBtn.setOnMouseClicked(e -> {
-                    if(quantity[0]>1) {
-                        quantity[0] = Integer.parseInt(qtyLabel.getText()) - 1;
-                        qtyLabel.setText(String.valueOf(quantity[0]));
-                    }
-            });
-        return Integer.parseInt((qtyLabel.getText()));
+    private void quantityIncrease(int[] quantity) {
+            quantity[0] = Integer.parseInt((qtyLabel.getText())) + 1;
+            qtyLabel.setText(String.valueOf(quantity[0]));
+            minusBtn.setDisable(false);
+            if(quantity[0]==9) {
+                plusBtn.setDisable(true);
+            }
+
+    }
+    private void quantityDecrease(int[] quantity) {
+            quantity[0] = Integer.parseInt(qtyLabel.getText()) - 1;
+            qtyLabel.setText(String.valueOf(quantity[0]));
+            plusBtn.setDisable(false);
+            if(quantity[0]==1) {
+                minusBtn.setDisable(true);
+            }
     }
 
+    private void handlePlusMinusBtn() {
+        final int[] quantity = new int[1];
+        minusBtn.setDisable(true);
+        plusBtn.setOnMouseClicked(e-> quantityIncrease(quantity));
+        minusBtn.setOnMouseClicked(e-> quantityDecrease(quantity));
+    }
+
+
     private void selectCoffee() {
-        espresso.setOnMouseClicked(e -> handleImagePress(espresso, latte, iced));
+        espresso.setOnMouseClicked(e -> {
+            coffeeEntity.setType(Type.ESPRESSO);
+            handleImagePress(espresso, latte, iced);
+        });
         latte.setOnMouseClicked(e -> handleImagePress(latte, espresso, iced));
         iced.setOnMouseClicked(e -> handleImagePress(iced, latte, espresso));
 
@@ -141,11 +155,12 @@ public class CoffeeController implements Initializable {
             Date date = new Date();
             Timestamp timestamp = new Timestamp(truncToSec(date).getTime());
             ordersEntity.setName("Order" + ordersEntity.getOrdersId());
-            ordersEntity.setQuantity(quantityIncreaseDecrease());
+            ordersEntity.setQuantity(Integer.parseInt(qtyLabel.getText()));
             ordersEntity.setPrice(calculateCoffeePrice());
             ordersEntity.setDate(timestamp);
             ordersEntity.setUserId(getUserId());
             System.out.println(ordersEntity.toString());
+            System.out.println(coffeeEntity.getType());
         });
     }
 

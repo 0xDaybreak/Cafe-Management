@@ -60,7 +60,7 @@ public abstract class GenericDao<T> {
     public T find(int id) {
         EntityManager entityManager = getEntityManager();
         try {
-            T ret = (T) entityManager.find(this.entityClass, id);
+            T ret = entityManager.find(this.entityClass, id);
             return ret;
         }
         catch (RuntimeException e) {
