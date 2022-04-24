@@ -27,6 +27,8 @@ public class OrdersEntity {
     @Column(name = "user_id")
     private int userId;
 
+
+
     public int getOrdersId() {
         return ordersId;
     }
@@ -92,4 +94,7 @@ public class OrdersEntity {
     public int hashCode() {
         return Objects.hash(ordersId, name, quantity, price, date, userId);
     }
+
+
+
 }

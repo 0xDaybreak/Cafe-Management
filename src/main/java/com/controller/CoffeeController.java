@@ -15,8 +15,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
-import org.hibernate.cfg.annotations.EntityBinder;
-import org.w3c.dom.Entity;
 
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -52,14 +50,12 @@ public class CoffeeController implements Initializable {
     @FXML
     private CheckBox decafCb;
 
-    //OrdersEntity ordersEntity = new OrdersEntity();
-    //CoffeeEntity coffeeEntity = new CoffeeEntity();
-    OrdersService ordersService = new OrdersService();
-
     HashMap<ImageView, Type> types = new HashMap<>();
     HashMap<ImageView, Size> sizes = new HashMap<>();
+
     //ArrayList that contain the images of clickable objects
     List<ImageView> imageViewList = new ArrayList<>();
+
     //price list of the individual items that are clickable on this scene
     double[] pricelist = {2.4, 3.4, 4.4, 1, 2, 3, 0.25, 0.5, 0.75, 1.75};
 
@@ -154,7 +150,7 @@ public class CoffeeController implements Initializable {
         largeC.setOnMouseClicked(e -> handleImagePress(largeC, mediumC, smallC));
     }
 
-    //checks the current status of the slider and returns the corresponding value from the pricelist
+    //checks the current status of the slider and returns the corresponding value from the price list
     private double checkSliderStatus() {
         return switch ((int) slider.getValue()) {
             case (0) -> pricelist[6];
@@ -168,7 +164,7 @@ public class CoffeeController implements Initializable {
         slider.setOnMouseClicked(e -> price.setText(calculateOrderPrice() + "$"));
     }
 
-    //checks if the checkbox is clicked or not and returns the corresponding price from the pricelist
+    //checks if the checkbox is clicked or not and returns the corresponding price from the price list
     private double checkCafDecaf() {
         if (decafCb.isSelected()) {
             return pricelist[9];
@@ -200,7 +196,7 @@ public class CoffeeController implements Initializable {
     }
 
     //method called in initialize; Whenever the "buy button" is pressed it assigns multiple values to the orderEntity
-    //to do: assign user id of current logged in user
+    //to do: assign user id of current logged-in user
     private void handleBuyButtonPress() {
         buyBtn.setOnMouseClicked(e -> placeOrder());
     }
@@ -208,7 +204,7 @@ public class CoffeeController implements Initializable {
     private void checkIfNull() throws Exception {
         OrdersEntity ordersEntity = new OrdersEntity();
         CoffeeEntity coffeeEntity = new CoffeeEntity();
-        confirmCoffee(coffeeEntity, ordersEntity);
+        confirmCoffee(coffeeEntity);
         Field[] fields = coffeeEntity.getClass().getDeclaredFields();
         StringBuilder name = new StringBuilder();
         boolean check = true;
@@ -222,8 +218,8 @@ public class CoffeeController implements Initializable {
         if (!check) {
             AlertBox.display("Error", "Please select: " + name);
         } else {
-            OrdersService ordersService = new OrdersService();
-            ordersService.addOrder(ordersEntity);
+            confirmOrder(ordersEntity);
+            coffeeEntity.setOrdersId(ordersEntity.getOrdersId());
             System.out.println(coffeeEntity);
         }
     }
@@ -236,24 +232,26 @@ public class CoffeeController implements Initializable {
         }
     }
 
-    private void confirmCoffee(CoffeeEntity coffeeEntity, OrdersEntity ordersEntity) {
+    private void confirmCoffee(CoffeeEntity coffeeEntity) {
         assignType(coffeeEntity);
         assignSize(coffeeEntity);
         assignSugar(coffeeEntity);
         assignDecaf(coffeeEntity);
-        coffeeEntity.setOrdersId(ordersEntity.getOrdersId());
     }
 
     private void confirmOrder(OrdersEntity ordersEntity) {
         Date date = new Date();
         Timestamp timestamp = new Timestamp(truncToSec(date).getTime());
-        ordersEntity.setName("Order" + ordersEntity.getOrdersId());
+        OrdersService ordersService = new OrdersService();
+        int i = Integer.parseInt(String.valueOf(ordersService.findID().get(0).getOrdersId() + 1));
+        ordersEntity.setName("Order" + i);
         ordersEntity.setQuantity(Integer.parseInt(qtyLabel.getText()));
         ordersEntity.setPrice(calculateOrderPrice());
         ordersEntity.setDate(timestamp);
         ordersEntity.setUserId(getCurrentUserId());
         ordersEntity.setPrice(calculateOrderPrice());
         System.out.println(ordersEntity);
+        ordersService.addOrder(ordersEntity);
     }
 
     private int getCurrentUserId() {
@@ -262,7 +260,7 @@ public class CoffeeController implements Initializable {
         return user.getUser().getUserId();
     }
 
-    //truncates the time stamp's miliseconds
+    //truncates the time stamp's milliseconds
     public Date truncToSec(Date date) {
         Calendar c = Calendar.getInstance();
         c.setTime(date);

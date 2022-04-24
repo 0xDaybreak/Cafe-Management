@@ -45,5 +45,17 @@ public class OrdersDao extends GenericDao<OrdersEntity> {
         return q.getResultList();
     }
 
+    public List<OrdersEntity> findID() {
+        EntityManager entityManager = getEntityManager();
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<OrdersEntity> query = criteriaBuilder.createQuery(OrdersEntity.class);
+
+        Root<OrdersEntity> from = query.from(OrdersEntity.class);
+        CriteriaQuery<OrdersEntity> select = query.select(from);
+        query.orderBy(criteriaBuilder.desc(from.get("ordersId")));
+        TypedQuery<OrdersEntity> q = entityManager.createQuery(query);
+        return q.getResultList();
+    }
+
 
 }

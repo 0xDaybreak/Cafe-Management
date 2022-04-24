@@ -2,6 +2,7 @@ package com.service;
 
 import com.dao.OrdersDao;
 import com.entity.OrdersEntity;
+import org.hibernate.criterion.Order;
 
 import javax.persistence.Persistence;
 import java.util.List;
@@ -38,5 +39,5 @@ public class OrdersService {
 
         return o;
     }
-
+    public List<OrdersEntity> findID() {return ordersDao.findID();}
 }
