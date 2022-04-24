@@ -8,6 +8,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "coffee", schema = "users")
+
 public class CoffeeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -77,6 +78,11 @@ public class CoffeeEntity {
 
     public void setOrdersId(int ordersId) {
         this.ordersId = ordersId;
+    }
+
+    @Override
+    public String toString() {
+        return "[" + this.coffeeId + " " + this.type + " " + this.size + " " + this.sugar + " " + this.decaf + " " + this.ordersId + "]";
     }
 
     @Override
