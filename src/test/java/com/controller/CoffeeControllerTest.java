@@ -20,8 +20,7 @@ class CoffeeControllerTest {
     @Test
     void checkOrdersIdIsSetCorrectly() {
         var ordersService = new OrdersService();
-        assertEquals(44,ordersService.findID().get(0).getOrdersId());
-
+        assertEquals(44,ordersService.findID().get(0).getOrdersId()); // mocking
     }
 
 }

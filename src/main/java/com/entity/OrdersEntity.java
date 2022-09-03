@@ -2,6 +2,7 @@ package com.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Comparator;
 import java.util.Objects;
 
 @Entity
@@ -95,6 +96,5 @@ public class OrdersEntity {
         return Objects.hash(ordersId, name, quantity, price, date, userId);
     }
 
-
-
 }
+

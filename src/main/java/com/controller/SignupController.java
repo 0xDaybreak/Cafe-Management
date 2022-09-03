@@ -110,8 +110,8 @@ public class SignupController implements Initializable {
     }
 
     private boolean retrieveUsername(String username) {
-        for(UserEntity iterate : userService.getAllUsers()) {
-            if(username.equals(iterate.getUsername())) {
+        for(UserEntity userEntity : userService.getAllUsers()) {
+            if(username.equals(userEntity.getUsername())) {
                 return true;
             }
         }

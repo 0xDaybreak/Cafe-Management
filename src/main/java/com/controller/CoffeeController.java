@@ -7,6 +7,7 @@ import com.entity.OrdersEntity;
 import com.entity.UserEntity;
 import com.misc.AlertBox;
 import com.misc.Singleton;
+import com.service.CoffeeService;
 import com.service.OrdersService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -124,7 +125,7 @@ public class CoffeeController implements Initializable {
         }
     }
 
-    private void assignSugar(CoffeeEntity coffeeEntity) {
+    public void assignSugar(CoffeeEntity coffeeEntity) {
         switch ((int) slider.getValue()) {
             case (0) -> coffeeEntity.setSugar(1);
             case (33) -> coffeeEntity.setSugar(2);
@@ -141,13 +142,13 @@ public class CoffeeController implements Initializable {
     }
 
     private void selectCoffee() {
-        espresso.setOnMouseClicked(e -> handleImagePress(espresso, latte, iced));
-        latte.setOnMouseClicked(e -> handleImagePress(latte, espresso, iced));
-        iced.setOnMouseClicked(e -> handleImagePress(iced, latte, espresso));
+        espresso.setOnMousePressed(e -> handleImagePress(espresso, latte, iced));
+        latte.setOnMousePressed(e -> handleImagePress(latte, espresso, iced));
+        iced.setOnMousePressed(e -> handleImagePress(iced, latte, espresso));
 
-        smallC.setOnMouseClicked(e -> handleImagePress(smallC, mediumC, largeC));
-        mediumC.setOnMouseClicked(e -> handleImagePress(mediumC, smallC, largeC));
-        largeC.setOnMouseClicked(e -> handleImagePress(largeC, mediumC, smallC));
+        smallC.setOnMousePressed(e -> handleImagePress(smallC, mediumC, largeC));
+        mediumC.setOnMousePressed(e -> handleImagePress(mediumC, smallC, largeC));
+        largeC.setOnMousePressed(e -> handleImagePress(largeC, mediumC, smallC));
     }
 
     //checks the current status of the slider and returns the corresponding value from the price list
@@ -161,7 +162,10 @@ public class CoffeeController implements Initializable {
     }
 
     private void handleSliderEvent() {
-        slider.setOnMouseClicked(e -> price.setText(calculateOrderPrice() + "$"));
+        slider.setOnMouseDragged(e -> price.setText(calculateOrderPrice() + "$"));
+        slider.setOnMousePressed(e -> price.setText(calculateOrderPrice() + "$"));
+        slider.setOnMouseMoved(e -> price.setText(calculateOrderPrice() + "$"));
+        slider.setOnMouseReleased(e-> price.setText(calculateOrderPrice() + "$"));
     }
 
     //checks if the checkbox is clicked or not and returns the corresponding price from the price list
@@ -218,8 +222,10 @@ public class CoffeeController implements Initializable {
         if (!check) {
             AlertBox.display("Error", "Please select: " + name);
         } else {
+            CoffeeService coffeeService = new CoffeeService();
             confirmOrder(ordersEntity);
             coffeeEntity.setOrdersId(ordersEntity.getOrdersId());
+            coffeeService.addCoffee(coffeeEntity);
             System.out.println(coffeeEntity);
         }
     }
@@ -239,7 +245,7 @@ public class CoffeeController implements Initializable {
         assignDecaf(coffeeEntity);
     }
 
-    private void confirmOrder(OrdersEntity ordersEntity) {
+    public void confirmOrder(OrdersEntity ordersEntity) {
         Date date = new Date();
         Timestamp timestamp = new Timestamp(truncToSec(date).getTime());
         OrdersService ordersService = new OrdersService();

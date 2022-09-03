@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="548.0" prefWidth="974.0" styleClass="parent" stylesheets="@stlyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.SignupController">
+   <children>
+      <ImageView fitHeight="580.0" fitWidth="1031.0" layoutX="-1.0" opacity="0.76" pickOnBounds="true" preserveRatio="true" styleClass="login-bgimg">
+         <image>
+            <Image url="@../../images/bgshop.png" />
+         </image>
+         <effect>
+            <Glow level="0.34" />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="261.0" fitWidth="287.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/login-logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="406.0" layoutY="115.0" lineSpacing="2.0" prefHeight="20.0" prefWidth="218.0" styleClass="login-text" text="USERNAME" textFill="#ece3ff">
+         <font>
+            <Font name="Segoe UI Semibold" size="20.0" />
+         </font>
+         <effect>
+            <ColorAdjust brightness="1.0" contrast="1.0" hue="-1.0" saturation="1.0" />
+         </effect>
+      </Label>
+      <Label layoutX="406.0" layoutY="191.0" lineSpacing="2.0" prefHeight="20.0" prefWidth="218.0" styleClass="login-text" text="PASSWORD" textFill="#ece3ff">
+         <font>
+            <Font name="Segoe UI Semibold" size="20.0" />
+         </font>
+         <effect>
+            <ColorAdjust brightness="1.0" contrast="1.0" hue="-1.0" saturation="1.0" />
+         </effect>
+      </Label>
+      <TextField fx:id="tfsupUsername" layoutX="406.0" layoutY="152.0" opacity="0.9" prefHeight="30.0" prefWidth="254.0" styleClass="login-textfield" stylesheets="@stlyles.css" text="Enter your username">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <font>
+            <Font name="Segoe UI" size="12.0" />
+         </font>
+      </TextField>
+      <Button fx:id="signUpBtn" layoutX="406.0" layoutY="446.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="254.0" styleClass="login-button" stylesheets="@stlyles.css" text="SIGN UP" textFill="#f9f7ff">
+         <font>
+            <Font name="Segoe UI Semibold" size="15.0" />
+         </font>
+      </Button>
+      <Label fx:id="loginLbl" layoutX="45.0" layoutY="536.0" lineSpacing="2.0" prefHeight="30.0" prefWidth="78.0" styleClass="login-textleftsup" text="LOGIN" textFill="#ece3ff">
+         <font>
+            <Font name="Segoe UI Semibold" size="20.0" />
+         </font>
+         <effect>
+            <ColorAdjust brightness="1.0" contrast="1.0" hue="-1.0" saturation="1.0" />
+         </effect>
+      </Label>
+      <Label fx:id="signupLbl" layoutX="123.0" layoutY="536.0" lineSpacing="2.0" prefHeight="30.0" prefWidth="101.0" styleClass="signup-textleftsup" text="SIGN UP" textFill="#ece3ff" underline="true">
+         <font>
+            <Font name="Segoe UI Semibold" size="20.0" />
+         </font>
+         <effect>
+            <ColorAdjust brightness="1.0" contrast="1.0" hue="-1.0" saturation="1.0" />
+         </effect>
+      </Label>
+      <PasswordField fx:id="tfsupPassword" layoutX="406.0" layoutY="229.0" prefHeight="30.0" prefWidth="254.0" styleClass="login-textfield" stylesheets="@stlyles.css" />
+      <Label layoutX="406.0" layoutY="275.0" lineSpacing="2.0" prefHeight="20.0" prefWidth="218.0" styleClass="login-text" text="E-MAIL" textFill="#ece3ff">
+         <font>
+            <Font name="Segoe UI Semibold" size="20.0" />
+         </font>
+         <effect>
+            <ColorAdjust brightness="1.0" contrast="1.0" hue="-1.0" saturation="1.0" />
+         </effect>
+      </Label>
+      <Label layoutX="406.0" layoutY="353.0" lineSpacing="2.0" prefHeight="20.0" prefWidth="218.0" styleClass="login-text" text="CITY" textFill="#ece3ff">
+         <font>
+            <Font name="Segoe UI Semibold" size="20.0" />
+         </font>
+         <effect>
+            <ColorAdjust brightness="1.0" contrast="1.0" hue="-1.0" saturation="1.0" />
+         </effect>
+      </Label>
+      <TextField fx:id="tfsupEmail" layoutX="406.0" layoutY="305.0" opacity="0.9" prefHeight="30.0" prefWidth="254.0" styleClass="login-textfield" stylesheets="@stlyles.css" text="Enter your e-mail">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </TextField>
+      <TextField fx:id="tfsupCity" layoutX="406.0" layoutY="383.0" opacity="0.9" prefHeight="30.0" prefWidth="254.0" styleClass="login-textfield" stylesheets="@stlyles.css" text="Enter your city">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </TextField>
+   </children>
+</AnchorPane>

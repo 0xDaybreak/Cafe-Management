@@ -43,7 +43,6 @@ public class UserDao extends GenericDao<UserEntity>{
         TypedQuery<UserEntity> q = entityManager.createQuery(query);
         q.setParameter(paramName, name);
 
-        List<UserEntity> results = q.getResultList();
-        return results;
+        return q.getResultList();
     }
 }

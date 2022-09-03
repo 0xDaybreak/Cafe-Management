@@ -2,8 +2,6 @@ package com.service;
 
 import com.dao.OrdersDao;
 import com.entity.OrdersEntity;
-import org.hibernate.criterion.Order;
-
 import javax.persistence.Persistence;
 import java.util.List;
 
@@ -29,15 +27,14 @@ public class OrdersService {
         return ordersDao.findAll();
     }
 
-    public OrdersEntity findOrder(String userid) throws Exception {
+    public OrdersEntity findOrder(String orderid) throws Exception {
 
-        List<OrdersEntity> orders = ordersDao.find(userid);
+        List<OrdersEntity> orders = ordersDao.find(orderid);
         if(orders.size()==0) {
             throw new Exception("Order not found");
         }
-        OrdersEntity o = orders.get(0);
 
-        return o;
+        return orders.get(0);
     }
     public List<OrdersEntity> findID() {return ordersDao.findID();}
 }

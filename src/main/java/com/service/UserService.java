@@ -13,8 +13,7 @@ public class UserService {
     public UserService() {
         try {
             userDao = new UserDao(Persistence.createEntityManagerFactory("default"));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -27,7 +26,9 @@ public class UserService {
         userDao.update(updatedUser);
     }
 
-    public void removeUser(UserEntity removeUser, int user_id) { userDao.remove(removeUser,user_id);}
+    public void removeUser(UserEntity removeUser, int user_id) {
+        userDao.remove(removeUser, user_id);
+    }
 
     public List<UserEntity> getAllUsers() {
         return userDao.findAll();
@@ -37,17 +38,15 @@ public class UserService {
     public UserEntity findUser(String user, String pass) throws Exception {
 
         List<UserEntity> users = userDao.find(user);
-        if(users.size()==0) {
+        if (users.size() == 0) {
             throw new Exception("User not found");
         }
 
         UserEntity u = users.get(0);
 
-        if(pass.compareTo(u.getPassword()) !=0 ) {
+        if (pass.compareTo(u.getPassword()) != 0) {
             throw new Exception("Password does not match");
         }
         return u;
     }
-
-
 }

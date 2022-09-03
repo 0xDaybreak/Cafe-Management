@@ -18,6 +18,7 @@ import javafx.scene.shape.Polyline;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -129,16 +130,19 @@ public class LoginController implements Initializable {
     }
 
     private void turnOnCoffeeSmoke() {
-        Image image = new Image(new File("src/main/resources/images/smoke.gif").toURI().toString());
-        cfSmoke.setImage(image);
-        cfBtn.selectedProperty().addListener((observableValue, aBoolean, t1) -> {
-            if(t1) {
-                cfSmoke.setOpacity(0.5);
-            }
-            else {
-                cfSmoke.setOpacity(0);
-            }
-        });
+        try (FileInputStream f = new FileInputStream("src/main/resources/images/smoke.gif")){
+                Image image = new Image(f);
+            cfSmoke.setImage(image);
+            cfBtn.selectedProperty().addListener((observableValue, aBoolean, t1) -> {
+                if (t1) {
+                    cfSmoke.setOpacity(0.5);
+                } else {
+                    cfSmoke.setOpacity(0);
+                }
+            });
+        } catch (Exception e) {
+
+        }
     }
 
     //checks if log in button was pressed
@@ -151,7 +155,8 @@ public class LoginController implements Initializable {
         userService = new UserService();
 
         try {
-            if((userService.findUser(tfUsername.getText(), tfPassword.getText()).getUsername() + userService.findUser(tfUsername.getText(), tfPassword.getText()).getPassword())
+            if((userService.findUser(tfUsername.getText(), tfPassword.getText()).getUsername() + userService.findUser(tfUsername.getText(),
+                    tfPassword.getText()).getPassword())
                     .equals(tfUsername.getText() + tfPassword.getText()))
             {
                 UserEntity user = userService.findUser(tfUsername.getText(), tfPassword.getText());

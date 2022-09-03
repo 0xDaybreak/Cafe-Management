@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1109.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.CoffeeController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffe6e6;">
+         <children>
+            <Pane layoutX="242.0" prefHeight="203.0" prefWidth="735.0" stylesheets="@stlyles.css">
+               <children>
+                  <ImageView id="0" fx:id="espresso" fitHeight="85.0" fitWidth="178.0" layoutX="98.0" layoutY="78.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" styleClass="orderimg">
+                     <image>
+                        <Image url="@../../images/espresso.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="1" fx:id="latte" fitHeight="178.0" fitWidth="178.0" layoutX="322.0" layoutY="54.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" styleClass="orderimg">
+                     <image>
+                        <Image url="@../../images/latte.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="2" fx:id="iced" fitHeight="156.0" fitWidth="139.0" layoutX="568.0" layoutY="14.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" styleClass="orderimg">
+                     <image>
+                        <Image url="@../../images/iced.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="-6.0" layoutY="86.0" prefHeight="33.0" prefWidth="84.0" text="Type:" textFill="#ff7777">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="28.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="139.0" layoutY="170.0" prefHeight="33.0" prefWidth="84.0" text="Espresso" textFill="#ff7777">
+                     <font>
+                        <Font name="Segoe UI" size="21.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="369.0" layoutY="170.0" prefHeight="33.0" prefWidth="54.0" text="Latte" textFill="#ff7777">
+                     <font>
+                        <Font name="Segoe UI" size="21.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="610.0" layoutY="170.0" prefHeight="33.0" prefWidth="54.0" text="Iced" textFill="#ff7777">
+                     <font>
+                        <Font name="Segoe UI" size="21.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="242.0" layoutY="203.0" prefHeight="219.0" prefWidth="735.0" stylesheets="@stlyles.css">
+               <children>
+                  <ImageView id="3" fx:id="smallC" fitHeight="128.0" fitWidth="128.0" layoutX="113.0" layoutY="53.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" styleClass="orderimg">
+                     <image>
+                        <Image url="@../../images/togo.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="4" fx:id="mediumC" fitHeight="156.0" fitWidth="156.0" layoutX="320.0" layoutY="25.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" styleClass="orderimg">
+                     <image>
+                        <Image url="@../../images/togo.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="5" fx:id="largeC" fitHeight="178.0" fitWidth="178.0" layoutX="535.0" layoutY="3.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" styleClass="orderimg">
+                     <image>
+                        <Image url="@../../images/togo.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutY="87.0" prefHeight="33.0" prefWidth="84.0" text="Size:" textFill="#ff7777">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="28.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="150.0" layoutY="181.0" prefHeight="33.0" prefWidth="54.0" text="Small" textFill="#ff7777">
+                     <font>
+                        <Font name="Segoe UI" size="21.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="352.0" layoutY="181.0" prefHeight="33.0" prefWidth="92.0" text="Medium" textFill="#ff7777">
+                     <font>
+                        <Font name="Segoe UI" size="21.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="606.0" layoutY="181.0" prefHeight="33.0" prefWidth="54.0" text="Large" textFill="#ff7777">
+                     <font>
+                        <Font name="Segoe UI" size="21.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="242.0" layoutY="438.0" prefHeight="72.0" prefWidth="735.0">
+               <children>
+                  <Slider fx:id="slider" blockIncrement="40.0" layoutX="113.0" layoutY="7.0" majorTickUnit="33.0" max="66.0" minorTickCount="0" prefHeight="47.0" prefWidth="555.0" showTickMarks="true" snapToTicks="true" stylesheets="@stlyles.css" />
+                  <Label layoutY="11.0" prefHeight="33.0" prefWidth="84.0" text="Sugar:" textFill="#ff7777">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="28.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="96.0" layoutY="35.0" prefHeight="33.0" prefWidth="54.0" text="One" textFill="#ff7777">
+                     <font>
+                        <Font name="Segoe UI" size="21.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="368.0" layoutY="35.0" prefHeight="33.0" prefWidth="46.0" text="Two" textFill="#ff7777">
+                     <font>
+                        <Font name="Segoe UI" size="21.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="633.0" layoutY="35.0" prefHeight="33.0" prefWidth="54.0" text="Three" textFill="#ff7777">
+                     <font>
+                        <Font name="Segoe UI" size="21.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="242.0" layoutY="510.0" prefHeight="57.0" prefWidth="735.0">
+               <children>
+                  <Label layoutY="13.0" prefHeight="40.0" prefWidth="115.0" text="Caffeine:" textFill="#ff7777">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="28.0" />
+                     </font>
+                  </Label>
+                  <CheckBox fx:id="decafCb" layoutX="141.0" layoutY="13.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="115.0" text="Decaf" textFill="#ff7777">
+                     <font>
+                        <Font name="Segoe UI" size="14.0" />
+                     </font>
+                  </CheckBox>
+               </children>
+            </Pane>
+            <Pane layoutX="597.0" layoutY="567.0" prefHeight="138.0" prefWidth="380.0">
+               <children>
+                  <Button fx:id="buyBtn" layoutX="252.0" layoutY="91.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="128.0" styleClass="orderbtn" stylesheets="@stlyles.css" text="Buy" textFill="WHITE" />
+                  <Label fx:id="price" layoutX="131.0" layoutY="8.0" prefHeight="57.0" prefWidth="115.0" text="0" textFill="#ff7777">
+                     <font>
+                        <Font name="Segoe UI" size="32.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="55.0" layoutY="17.0" prefHeight="40.0" prefWidth="76.0" text="Price:" textFill="#ff7777">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="28.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="plusBtn" layoutX="329.0" layoutY="24.0" mnemonicParsing="false" prefHeight="11.0" prefWidth="24.0" styleClass="orderbtn" stylesheets="@stlyles.css" text="+" textFill="WHITE">
+                     <font>
+                        <Font name="Segoe UI" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="minusBtn" layoutX="265.0" layoutY="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="26.0" styleClass="orderbtn" stylesheets="@stlyles.css" text="-" textFill="WHITE">
+                     <font>
+                        <Font name="Segoe UI" size="13.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="qtyLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="297.0" layoutY="21.0" prefHeight="33.0" prefWidth="26.0" text="1" textFill="#ff7777">
+                     <font>
+                        <Font name="Segoe UI" size="21.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

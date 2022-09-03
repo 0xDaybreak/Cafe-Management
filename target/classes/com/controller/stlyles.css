@@ -1,0 +1,146 @@
+
+
+.parent {
+    -fx-background-color: transparent;
+}
+
+.login-bgimg {
+
+}
+
+.login-text {
+    -fx-opacity: 0.95;
+}
+
+.signup-textleft{
+    -fx-opacity: 0.6;
+}
+
+.login-textleft {
+    -fx-opacity: 1;
+}
+
+.signup-textleftsup{
+    -fx-opacity: 1;
+}
+
+.login-textleftsup {
+    -fx-opacity: 0.6;
+}
+
+.login-textfield {
+    -fx-background-radius: 13px;
+    -fx-background-color: #ffb0b0;
+    -fx-opacity: 0.77;
+}
+
+.login-button {
+    -fx-border-color: #c58383;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 11px;
+    -fx-background-color: #604038;
+}
+
+.login-button:hover {
+    -fx-background-color: #7c564d;
+}
+
+.home-vbox {
+    -fx-background-color: #7a1953;
+}
+
+.menu-button {
+    -fx-background-color: #7a1953;
+}
+.menu-button:hover {
+    -fx-background-color: #966b61;
+}
+
+.delete {
+
+    -fx-background-color: #fff0f0;
+    -fx-border-color: #ee2a2a;
+    -fx-background-radius:10px;
+    -fx-border-radius: 10px;
+}
+
+
+.delete:hover {
+
+    -fx-background-color: #ffffff;
+}
+
+.insert {
+
+    -fx-background-color: #8f316b;
+    -fx-border-color: #c58383;
+    -fx-background-radius:10px;
+    -fx-border-radius: 10px;
+}
+
+
+.insert:hover {
+
+    -fx-background-color: #966b61;
+}
+
+.update {
+
+    -fx-background-color: #a13ea4;
+    -fx-border-color: #59c0f3;
+    -fx-background-radius:10px;
+    -fx-border-radius: 10px;
+}
+
+
+.update:hover {
+
+    -fx-background-color: #67b1c7;
+}
+
+.table-row-cell:filled:hover {
+    -fx-size:50;
+    -fx-alignment: CENTER;
+    -fx-text-alignment: center;
+}
+
+.table-view:row-selection {
+    -fx-background-color: #ffdbdb;
+    -fx-text-fill: #ffdbdb;
+    -fx-background-radius: 15px;
+    -fx-fixed-cell-size: 50;
+    -fx-alignment: CENTER;
+    -fx-text-alignment: center;
+
+}
+
+.table-view .table-column{
+    -fx-text-alignment: center;
+    -fx-alignment: CENTER
+
+}
+
+.orderimg:hover {
+    -fx-scale-x: 1.08;
+    -fx-scale-y: 1.08;
+    -fx-scale-z: 1.08;
+}
+
+.slider .track {
+    -fx-pref-height:12;
+}
+
+.slider .thumb {
+    -fx-pref-height: 15;
+    -fx-pref-width: 15;
+}
+
+.orderbtn {
+    -fx-background-color: #b19178;
+    -fx-background-radius: 6px;
+}
+
+.orderbtn:hover {
+    -fx-background-color: #d5baa9;
+}
